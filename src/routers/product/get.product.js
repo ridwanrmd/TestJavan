@@ -16,6 +16,24 @@ const getAllProduct = async (req, res, next) => {
   }
 };
 
+const getProductById = async (req, res, next) => {
+  try {
+    const { productId } = req.params;
+    const resGetProduct = await Product.findOne({
+      where: { productId },
+    });
+    res.send({
+      status: "success",
+      message: "succes get product by id",
+      data: resGetProduct,
+    });
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+};
+
 router.get("/", getAllProduct);
+router.get("/:productId", getProductById);
 
 module.exports = router;
