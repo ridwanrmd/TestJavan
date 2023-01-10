@@ -1,7 +1,7 @@
 const fs = require("fs");
 require("dotenv").config();
 
-const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = rpocces.env;
+const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 module.exports = {
   development: {
