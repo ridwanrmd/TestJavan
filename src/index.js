@@ -9,6 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 //Routers
+const userRouter = require("./routers/user");
+
+app.use("/users", userRouter);
 
 // Connection Test
 app.get("/api", (req, res) => {
