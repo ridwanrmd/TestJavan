@@ -12,6 +12,20 @@ const getAllUser = async (req, res, next) => {
   }
 };
 
+const getUserById = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const resGetUser = await User.findOne({
+      where: { userId },
+    });
+    res.send({ data: resGetUser });
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+};
+
 router.get("/", getAllUser);
+router.get("/:userId", getUserById);
 
 module.exports = router;
