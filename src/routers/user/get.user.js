@@ -5,7 +5,11 @@ const { User } = require("../../../models");
 const getAllUser = async (req, res, next) => {
   try {
     const resGetUser = await User.findAll();
-    res.send({ data: resGetUser });
+    res.send({
+      status: "success",
+      message: "success get all users",
+      data: resGetUser,
+    });
   } catch (error) {
     next(error);
     console.log(error);
@@ -18,7 +22,11 @@ const getUserById = async (req, res, next) => {
     const resGetUser = await User.findOne({
       where: { userId },
     });
-    res.send({ data: resGetUser });
+    res.send({
+      status: "success",
+      message: "success get user by id",
+      data: resGetUser,
+    });
   } catch (error) {
     next(error);
     console.log(error);
