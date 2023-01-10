@@ -11,9 +11,11 @@ app.use(express.json());
 //Routers
 const userRouter = require("./routers/user");
 const productRouter = require("./routers/product");
+const userAssetRouter = require("./routers/userAsset");
 
 app.use("/users", userRouter);
 app.use("/products", productRouter);
+app.use("/assets", userAssetRouter);
 
 // Connection Test
 app.get("/api", (req, res) => {

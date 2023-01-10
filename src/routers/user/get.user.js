@@ -4,7 +4,9 @@ const { User } = require("../../../models");
 
 const getAllUser = async (req, res, next) => {
   try {
-    const resGetUser = await User.findAll();
+    const resGetUser = await User.findAll({
+      attributes: ["userId", "name", "gender"],
+    });
     res.send({
       status: "success",
       message: "success get all users",
@@ -21,6 +23,7 @@ const getUserById = async (req, res, next) => {
     const { userId } = req.params;
     const resGetUser = await User.findOne({
       where: { userId },
+      attributes: ["userId", "name", "gender"],
     });
     res.send({
       status: "success",

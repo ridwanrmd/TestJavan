@@ -4,7 +4,9 @@ const { Product } = require("../../../models");
 
 const getAllProduct = async (req, res, next) => {
   try {
-    const resGetProduct = await Product.findAll();
+    const resGetProduct = await Product.findAll({
+      attributes: ["productId", "productName", "desc", "price"],
+    });
     res.send({
       status: "success",
       message: "success get product list",
@@ -21,6 +23,7 @@ const getProductById = async (req, res, next) => {
     const { productId } = req.params;
     const resGetProduct = await Product.findOne({
       where: { productId },
+      attributes: ["productId", "productName", "desc", "price"],
     });
     res.send({
       status: "success",
