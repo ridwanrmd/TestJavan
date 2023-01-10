@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Product.belongsToMany(models.User, {
+        through: models.UserAsset,
+        foreignKey: "productId",
+      });
     }
   }
   Product.init(
@@ -36,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Product",
-      tableName: "products",
+      tableName: "Products",
     }
   );
   return Product;
