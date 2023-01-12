@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { User } = require("../../../models");
+const { User, Product } = require("../../../models");
 
 const getAllUser = async (req, res, next) => {
   try {
@@ -24,6 +24,12 @@ const getUserById = async (req, res, next) => {
     const resGetUser = await User.findOne({
       where: { userId },
       attributes: ["userId", "name", "gender"],
+      include: [
+        {
+          model: Product,
+          attributes: ["productName"],
+        },
+      ],
     });
     res.send({
       status: "success",
